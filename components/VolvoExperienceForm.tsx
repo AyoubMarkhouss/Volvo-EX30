@@ -7,7 +7,9 @@ export default function VolvoExperienceForm() {
   return (
     <div className="max-w-xl mx-auto px-4 py-10 md:py-16 text-black">
       {/* Top Title */}
-      <h2 className="text-2xl md:text-3xl font-semibold mb-2">Prêts pour l&apos;expérience ?</h2>
+      <h2 className="text-2xl md:text-3xl font-semibold mb-2">
+        Prêts pour l&apos;expérience ?
+      </h2>
       <p className=" text-sm md:text-md mb-6">
         Renseignez ce formulaire pour tenter de vivre 3 jours avec le Volvo
         EX30.
@@ -15,7 +17,9 @@ export default function VolvoExperienceForm() {
 
       {/* Lieu de résidence */}
       <div className="mb-10">
-        <h3 className="text-xl md:text-2xl font-semibold">Votre lieu de résidence</h3>
+        <h3 className="text-xl md:text-2xl font-semibold">
+          Votre lieu de résidence
+        </h3>
         <p className="text-sm md:text-md text-gray-600 mb-4">
           Indiquez votre ville de résidence et le showroom Volvo le plus proche
           pour récupérer votre EX30. Nous ferons en sorte de vous proposer le
@@ -119,23 +123,26 @@ export default function VolvoExperienceForm() {
                     Scandinavian Auto Maroc et la Volvo Car Corporation
                     stockeront et traiteront vos données à caractère personnel
                     conformément à{" "}
-                    <span className=" underline">l’avis d'information</span>.
+                    <span className=" underline">
+                      l&apos;avis d&apos;information
+                    </span>
+                    .
                   </span>
                 </label>
 
                 <p>
                   Scandinavian Auto Maroc partagera également vos données à
                   caractère personnel avec le concessionnaire/détaillant que
-                  vous avez sélectionné dans l'objectif de traiter votre demande
-                  et d’en assurer le suivi.
+                  vous avez sélectionné dans l&apos;objectif de traiter votre
+                  demande et d’en assurer le suivi.
                 </p>
 
                 <p>
                   En sélectionnant un ou plusieurs des moyens de communication
                   ci-dessous, je consens à ce que mes données à caractère
-                  personnel soient traitées afin de recevoir à l'avenir, par les
-                  moyens choisis, des informations et des offres de la part de
-                  Scandinavian Auto Maroc et de la part du
+                  personnel soient traitées afin de recevoir à l&apos;avenir,
+                  par les moyens choisis, des informations et des offres de la
+                  part de Scandinavian Auto Maroc et de la part du
                   concessionnaire/détaillant sélectionné.
                 </p>
 
