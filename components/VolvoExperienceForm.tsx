@@ -7,7 +7,7 @@ export default function VolvoExperienceForm() {
   return (
     <div className="max-w-xl mx-auto px-4 py-10 md:py-16 text-black">
       {/* Top Title */}
-      <h2 className="text-2xl md:text-3xl font-semibold mb-2">Prêts pour l’expérience ?</h2>
+      <h2 className="text-2xl md:text-3xl font-semibold mb-2">Prêts pour l&apos;expérience ?</h2>
       <p className=" text-sm md:text-md mb-6">
         Renseignez ce formulaire pour tenter de vivre 3 jours avec le Volvo
         EX30.

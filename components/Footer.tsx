@@ -1,8 +1,8 @@
-import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
-import { PiGlobeLight } from "react-icons/pi"; // Earth icon
+import {FaInstagram} from "react-icons/fa";
+
 import { BsArrowUp, BsLinkedin } from "react-icons/bs";
 import { CiLocationOn } from "react-icons/ci";
-import { FaThreads } from "react-icons/fa6";
+
 import { AiFillFacebook } from "react-icons/ai";
 
 export default function Footer() {

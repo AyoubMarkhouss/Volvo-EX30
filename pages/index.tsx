@@ -1,7 +1,7 @@
 import VolvoExperienceForm from "@/components/VolvoExperienceForm";
 import Image from "next/image";
 import { useRef } from "react";
-import { Slider } from "@ark-ui/react/slider";
+
 import VolvoFaq from "@/components/VolvoFaq";
 import Footer from "@/components/Footer";
 export default function Home() {
