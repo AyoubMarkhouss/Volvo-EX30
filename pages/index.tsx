@@ -1,115 +1,115 @@
+import VolvoExperienceForm from "@/components/VolvoExperienceForm";
 import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
+import { useRef } from "react";
+import { Slider } from "@ark-ui/react/slider";
+import VolvoFaq from "@/components/VolvoFaq";
+import Footer from "@/components/Footer";
 export default function Home() {
+  const formRef = useRef<HTMLDivElement | null>(null);
+
+  const handleScrollToForm = () => {
+    formRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+    <main>
+      {/* navbar */}
+      <div className="flex justify-center items-center h-16 md:h-20">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          alt="logo"
+          src="/png/logo.png"
+          width={2500}
+          height={2500}
+          className=" w-28 md:w-36"
         />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              pages/index.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </div>
+      {/* hero */}
+      <Image
+        alt="slider"
+        src="/png/Slider.png"
+        width={2500}
+        height={2500}
+        className="w-full"
+      />
+
+      {/* Volvo lovers */}
+      <div className="flex justify-center items-center">
+        <div className="flex flex-col justify-center items-center py-10 md:py-20 gap-y-6 px-5 md:px-0 md:max-w-4xl">
+          <Image
+            alt="slider"
+            src="/png/volvolovers.png"
+            width={2500}
+            height={2500}
+            className="w-40 md:w-72"
+          />
+
+          <h1 className="text-center text-lg md:text-4xl">
+            Prenez le temps de ressentir. <br /> Vivez 3 jours en EX30 100%
+            électrique. <br />
+            Pas un simple essai… Une véritable rencontre.
+          </h1>
+
+          <p className="text-sm md:text-lg text-center">
+            Vous aussi, vous pouvez faire l’expérience #VolvoLovers <br />{" "}
+            Conduisez une Volvo EX30 pour 3 jours, pour que vous puissiez la
+            vivre à votre rythme. <br /> Sans pression, sans engagement… en
+            toute liberté
+          </p>
+          <p className="text-sm md:text-lg text-center">
+            Inscrivez-vous, choisissez votre ville,
+            <br /> récupérez votre EX30… et laissez parler vos sensations.
+          </p>
+
+          <button
+            onClick={handleScrollToForm}
+            className="font-semibold w-36 md:w-48 h-12 text-md md:text-xl rounded-lg hover:cursor-pointer bg-black text-white"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            Inscription
+          </button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+
+      {/* Slider 2 */}
+      <div className="pb-10">
+        <div className="md:px-14 lg:px-28 flex flex-col gap-y-7">
+          <div>
+            <h2 className="font-semibold text-lg text-center md:text-start md:text-2xl lg:text-4xl">
+              Un SUV compact, 100% électrique, <br /> Design épuré. Technologie
+              intuitive. <br /> Un plaisir à (re)découvrir au quotidien.
+            </h2>
+          </div>
+          <div className="relative flex flex-col justify-center items-center">
+            <Image
+              alt="Slider2"
+              src="/png/Slider2.png"
+              width={2500}
+              height={2500}
+              className="w-full "
+            />
+            <button className="hidden md:block absolute font-semibold md:top-5 md:right-5 lg:top-10 lg:right-10 md:w-36 lg:w-48 h-12 text-md md:text-xl rounded-lg hover:cursor-pointer bg-white text-black">
+              <a href="https://www.volvocars.com/ma/cars/ex30-electric/">
+                Découvrir
+              </a>
+            </button>
+            <button className="block md:hidden font-semibold md:top-5 md:right-5 lg:top-10 lg:right-10 w-36 md:w-36 lg:w-48 h-12 text-md md:text-xl rounded-lg hover:cursor-pointer bg-black text-white mt-7">
+              <a href="https://www.volvocars.com/ma/cars/ex30-electric/">
+                Découvrir
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* form */}
+      <div ref={formRef} className="bg-gray-100">
+        <VolvoExperienceForm />
+      </div>
+
+      {/* FAQ */}
+      <div>
+        <VolvoFaq />
+      </div>
+
+      <Footer />
+    </main>
   );
 }
