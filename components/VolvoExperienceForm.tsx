@@ -19,56 +19,76 @@ interface FormData {
 }
 
 export default function VolvoExperienceForm() {
-    const [formData, setFormData] = useState<FormData>({
-      villeResidence: "",
-      villeRetrait: "",
-      nom: "",
-      prenom: "",
-      profession: "",
-      dateNaissance: "",
-      permis: "",
-      delivreLe: "",
-      email: "",
-      telephone: "",
-      promotion: [],
+  const [formData, setFormData] = useState<FormData>({
+    villeResidence: "",
+    villeRetrait: "",
+    nom: "",
+    prenom: "",
+    profession: "",
+    dateNaissance: "",
+    permis: "",
+    delivreLe: "",
+    email: "",
+    telephone: "",
+    promotion: [],
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handlePhoneChange = (value: string) => {
+    setFormData({ ...formData, telephone: value });
+  };
+
+  const handlePromotionChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setFormData((prev) => {
+      const alreadyChecked = prev.promotion.includes(value);
+      const updated = alreadyChecked
+        ? prev.promotion.filter((item) => item !== value)
+        : [...prev.promotion, value];
+      return { ...prev, promotion: updated };
     });
+  };
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const handlePhoneChange = (value: string) => {
-      setFormData({ ...formData, telephone: value });
-    };
-
-    const handlePromotionChange = (e: ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value;
-      setFormData((prev) => {
-        const alreadyChecked = prev.promotion.includes(value);
-        const updated = alreadyChecked
-          ? prev.promotion.filter((item) => item !== value)
-          : [...prev.promotion, value];
-        return { ...prev, promotion: updated };
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setIsSubmitted(false);
+    try {
+      await fetch("https://volvo-ex-30.vercel.app/api/submit-form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
-    };
-
-    const handleSubmit = async (e: FormEvent) => {
-      e.preventDefault();
-      try {
-        await fetch("https://volvo-ex-30.vercel.app/api/submit-form", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
-        toast.success("Formulaire soumis avec succès !");
-      } catch (error) {
-        console.error("Erreur :", error);
-        toast.error("Une erreur est survenue. Veuillez réessayer.");
-      }
-    };
-    
+      toast.success("Formulaire soumis avec succès !");
+      setIsSubmitted(true);
+      setFormData({
+        villeResidence: "",
+        villeRetrait: "",
+        nom: "",
+        prenom: "",
+        profession: "",
+        dateNaissance: "",
+        permis: "",
+        delivreLe: "",
+        email: "",
+        telephone: "",
+        promotion: [],
+      });
+    } catch (error) {
+      console.error("Erreur :", error);
+      toast.error("Une erreur est survenue. Veuillez réessayer.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -259,9 +279,34 @@ export default function VolvoExperienceForm() {
             <div className="w-full flex justify-center items-center">
               <button
                 type="submit"
-                className="font-semibold md:top-5 md:right-5 lg:top-10 lg:right-10 w-36 md:w-36 lg:w-48 h-12 text-md md:text-xl rounded-lg hover:cursor-pointer bg-black text-white mt-7"
+                disabled={isSubmitting}
+                className="font-semibold md:top-5 md:right-5 lg:top-10 lg:right-10 w-36 md:w-36 lg:w-48 h-12 text-md md:text-xl rounded-lg hover:cursor-pointer bg-black text-white mt-7 flex items-center justify-center"
               >
-                Inscription
+                {isSubmitting ? (
+                  <svg
+                    className="animate-spin h-5 w-5 mr-2 text-white"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                      fill="none"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    />
+                  </svg>
+                ) : isSubmitted ? (
+                  "Envoyé"
+                ) : (
+                  "Inscription"
+                )}
               </button>
             </div>
           </div>
