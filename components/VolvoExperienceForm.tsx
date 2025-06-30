@@ -60,7 +60,7 @@ export default function VolvoExperienceForm() {
     setIsSubmitting(true);
     setIsSubmitted(false);
     try {
-      await fetch("http://volvolovers.ma/api/submit-form", {
+      await fetch("https://volvo-ex-30.vercel.app/api/submit-form", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
