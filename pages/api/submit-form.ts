@@ -1,10 +1,15 @@
-export default async function handler(req, res) {
+import type { NextApiRequest, NextApiResponse } from "next";
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Méthode non autorisée" });
   }
 
   try {
-    const response = await fetch(
+    await fetch(
       "https://script.google.com/macros/s/AKfycbxyquxO613rn0mGtSOsLaHxzgfYyUHe3N7_uh1MrWxaGPbvJRi22ncV_YFp3yJWisCJ4w/exec",
       {
         method: "POST",
